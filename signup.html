@@ -1,0 +1,122 @@
+<html>
+	<head>
+		<title>Sign Up|STYLIZE</title>
+		<link type="text/css" rel="stylesheet" href="signup.css" />
+		<link rel="shortcut icon" type="image/x-icon" href="stylize.ico"  />
+		
+		<script type="text/javascript">
+		 
+		 function validate()
+		 {	
+			var err_message=" ";
+			var regexp=/^[0-9]+$/;
+			
+			if(document.signup.uname.value.length==0)
+			{	err_message+="LOGGED OUT";
+				alert(err_message);
+			}
+			
+			var atpos=document.signup.email.value.indexOf("@");
+			var dotpos=document.signup.email.value.lastIndexOf(".");
+
+			if(atpos<1 || dotpos<atpos+2 || dotpos+2>=document.signup.email.value.length)
+			{
+				alert("Not a valid e-mail address");
+				return false;
+			}
+			
+  
+			if(document.signup.address.value.length==0)
+				{err_message+="Enter a valid address.\n";
+				 alert(err_message);
+				}
+				
+			if(document.signup.city.value.length==0)
+				{err_message+="Enter a valid city.\n";
+				 alert(err_message);
+				}
+				
+			if(document.signup.state.value.length==0)
+				{err_message+="Enter a valid state.\n";
+				 alert(err_message);
+				}
+				
+			if(!document.signup.pcode.value.match(regexp))
+				{err_message+="Enter numbers only.\n";
+				 alert(err_message);
+				}
+				
+			if(document.signup.pcode.value.length!=6)
+				{err_message+="Enter a pin code of 6 digits.\n";
+				 alert(err_message);
+				}
+				
+			if(err_message!=" ")
+			{
+				alert(err_message);
+				return false;
+			}
+			else
+				return true;
+		 }
+		 
+		 
+		 
+		 function validate1()
+		 {	var err_msg=" ";
+		 
+			if(document.verify.uname.value.length==0)
+			{	err_msg+="Enter a valid name.\n";
+				alert(err_msg);
+			}
+			
+			if(err_msg!=" ")
+			{
+				alert(err_msg);
+				return false;
+			}
+			else
+				return true;
+		 }
+		 
+		 </script>
+		 
+	</head>
+	
+	<body BACKGROUND="vintage-pattern-black.gif">
+	 <div id="site_name">   S T Y L I Z E   </div>
+	 
+	 <div id="navbar">
+			<ul>
+			 <li><a href="home.html">HOME</a></li>
+			 <li><a href="men.html">MEN</a></li>
+			 <li><a href="women.html">WOMEN</a></li>
+			 <li><a href="contact.html">CONTACT US</a></li>
+			 <li id="signup">SIGN UP</a></li>
+			</ul>
+	 </div>
+	
+	
+	 <form id="form1" name="signup" onSubmit="return validate()" action="save.jsp" method="post">
+		<h2>SIGN UP</h2>
+	   <label>NAME:</label><input type="text" name="uname" size=40><p>
+	   <label>E-MAIL ID:</label><input type="text" name="email" size=40><p>
+	   <label>PASSWORD:</label><input type="password" name="pwd" size=40><p>
+	   <label>ADDRESS:</label><input type="text" name="address" size=40><p>
+	   <label>CITY:</label><input type="text" name="city" size=40><p>
+	   <label>PIN CODE:</label><input type="text" name="pcode" size=40><p>
+	   <label>STATE:</label><input type="text" name="state" size=40><p>
+	   <subm><input class="button" type="submit" value="CONTINUE"></subm>
+	   <input class="button" type="reset" value="CANCEL">
+	 </form>
+	 
+	 <form id="form2" name="verify" onSubmit="return validate1()" action="verify.jsp" method="post">
+		<h2>LOGIN</h2>
+		<label>NAME:</label><input type="text" name="uname" size=40><p>
+		<label>PASSWORD:</label><input type="password" name="pwd" size=40><p>
+		<subm><input class="button" type="submit" value="CONTINUE"></subm>
+	    <input class="button" type="reset" value="CANCEL">
+	</form>
+	 
+	</body>
+</html>
